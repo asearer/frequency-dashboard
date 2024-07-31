@@ -1,152 +1,171 @@
 /* src/Dashboard.css */
+
+/* Container for the entire dashboard */
 .dashboard {
-    font-family: 'Press Start 2P', cursive;
-    background: #2e2e2e;
-    color: #e0e0e0;
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: inset 5px 5px 10px #1c1c1c, 5px 5px 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-family: 'Press Start 2P', cursive; /* Font style for the dashboard */
+    background: #2e2e2e; /* Dark gray background */
+    color: #e0e0e0; /* Light gray text color */
+    padding: 10px; /* Padding around the content */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: inset 5px 5px 10px #1c1c1c, 5px 5px 10px rgba(0, 0, 0, 0.5); /* Inner and outer shadow for a 3D effect */
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Arrange child elements in a column */
+    align-items: center; /* Center align items horizontally */
     height: 100vh; /* Full viewport height */
     overflow: hidden; /* Prevent scrolling */
-  }
-  
-  .tabs {
-    width: 100%;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .toggle-button {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 25px;
-    background: #3c3c3c;
-    color: #d4af37; /* Metallic gold color */
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 12px;
-    box-shadow: inset 2px 2px 5px #1c1c1c, 2px 2px 5px rgba(0, 0, 0, 0.5);
-  }
-  
-  .toggle-button:hover {
-    background: #4a4a4a;
-    box-shadow: inset 2px 2px 5px #2c2c2c, 2px 2px 5px rgba(0, 0, 0, 0.3);
-  }
-  
-  .content {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Four columns */
+}
+
+/* Container for the toggle buttons */
+.tabs {
+    width: 100%; /* Full width of the parent container */
+    margin-bottom: 10px; /* Space below the tabs */
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Center align the buttons horizontally */
+}
+
+/* Style for the toggle button */
+.toggle-button {
+    padding: 6px 12px; /* Padding inside the button */
+    border: none; /* Remove default border */
+    border-radius: 25px; /* Rounded corners for the button */
+    background: #3c3c3c; /* Dark gray background */
+    color: #d4af37; /* Metallic gold text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-weight: bold; /* Bold text */
+    font-size: 12px; /* Font size */
+    box-shadow: inset 2px 2px 5px #1c1c1c, 2px 2px 5px rgba(0, 0, 0, 0.5); /* Inner and outer shadow */
+}
+
+/* Style for the toggle button on hover */
+.toggle-button:hover {
+    background: #4a4a4a; /* Slightly lighter gray background */
+    box-shadow: inset 2px 2px 5px #2c2c2c, 2px 2px 5px rgba(0, 0, 0, 0.3); /* Lighter inner shadow */
+}
+
+/* Container for the main content */
+.content {
+    display: grid; /* Grid layout for the items */
+    grid-template-columns: repeat(4, 1fr); /* Four equal-width columns */
     gap: 10px; /* Space between items */
-    width: 100%;
-    max-width: 1000px; /* Maximum width of grid */
-    height: calc(100vh - 70px); /* Height minus header and padding */
+    width: 100%; /* Full width of the parent container */
+    max-width: 1000px; /* Maximum width of the grid */
+    height: calc(100vh - 70px); /* Height minus the header and padding */
     overflow-y: auto; /* Allow vertical scrolling if needed */
-  }
-  
-  .frequency-item {
-    padding: 8px;
-    border: none;
-    border-radius: 15px;
-    background: #3c3c3c;
-    box-shadow: inset 5px 5px 10px #2e2e2e, 5px 5px 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+}
+
+/* Style for each frequency item */
+.frequency-item {
+    padding: 8px; /* Padding inside the item */
+    border: none; /* Remove default border */
+    border-radius: 15px; /* Rounded corners */
+    background: #3c3c3c; /* Dark gray background */
+    box-shadow: inset 5px 5px 10px #2e2e2e, 5px 5px 10px rgba(0, 0, 0, 0.5); /* Inner and outer shadow */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Arrange child elements in a column */
+    overflow: hidden; /* Hide overflow content */
     height: calc(100% - 30px); /* Adjust height for compactness */
-  }
-  
-  .frequency-item h3 {
-    margin: 0;
-    color: #d4af37; /* Metallic gold color */
-  }
-  
-  .frequency-item p {
-    margin: 3px 0;
-    color: #e0e0e0;
-  }
-  
-  .dial-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 8px;
-  }
-  
-  .analog-display {
-    position: relative;
-    width: 100%;
-    height: calc(20px + 30px);
-    background: #2e2e2e;
-    border-radius: 10px;
-    box-shadow: inset 3px 3px 6px #1c1c1c, 3px 3px 6px rgba(0, 0, 0, 0.5);
-    margin-bottom: 8px;
-    overflow: hidden;
-  }
-  
-  .analog-display .dial {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, #3c3c3c 50%, #d4af37 50%);
-    border-radius: 10px;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-  }
-  
-  .dial-slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: calc(8px + 30px);
-    background: #d4af37;
-    border-radius: 10px;
-    outline: none;
-    cursor: pointer;
-    margin-bottom: 8px;
-    box-shadow: inset 3px 3px 6px #1c1c1c, 3px 3px 6px rgba(0, 0, 0, 0.5);
-  }
-  
-  .dial-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 12px;
-    height: 12px;
-    background: #3c3c3c;
-    border: 2px solid #d4af37;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  .digital-display {
-    color: #e0e0e0;
-    font-size: 10px;
-  }
-  
-  .signal-visualization {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .signal-chart {
-    border: none;
-    border-radius: 15px;
-    background: #3c3c3c;
-    padding: 6px;
-    width: 100%;
-    height: calc(100px + 25px);
-    box-sizing: border-box;
-    overflow: hidden;
-    box-shadow: inset 5px 5px 10px #2e2e2e, 5px 5px 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .signal-chart canvas {
-    width: 100% !important;
-    height: 100% !important;
-  }
+}
+
+/* Style for the frequency item headings */
+.frequency-item h3 {
+    margin: 0; /* Remove default margin */
+    color: #d4af37; /* Metallic gold text color */
+}
+
+/* Style for the frequency item paragraphs */
+.frequency-item p {
+    margin: 3px 0; /* Margin above and below the text */
+    color: #e0e0e0; /* Light gray text color */
+}
+
+/* Container for the dial elements */
+.dial-container {
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Arrange child elements in a column */
+    align-items: center; /* Center align items horizontally */
+    margin-top: 8px; /* Space above the container */
+}
+
+/* Style for the analog display */
+.analog-display {
+    position: relative; /* Relative positioning for the dial */
+    width: 100%; /* Full width of the parent container */
+    height: calc(20px + 30px); /* Height of the display */
+    background: #2e2e2e; /* Dark gray background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: inset 3px 3px 6px #1c1c1c, 3px 3px 6px rgba(0, 0, 0, 0.5); /* Inner and outer shadow */
+    margin-bottom: 8px; /* Space below the display */
+    overflow: hidden; /* Hide overflow content */
+}
+
+/* Style for the dial within the analog display */
+.analog-display .dial {
+    position: absolute; /* Absolute positioning within the parent container */
+    width: 100%; /* Full width of the parent container */
+    height: 100%; /* Full height of the parent container */
+    background: linear-gradient(90deg, #3c3c3c 50%, #d4af37 50%); /* Gradient background */
+    border-radius: 10px; /* Rounded corners */
+    background-size: 100% 100%; /* Size of the background */
+    background-repeat: no-repeat; /* No repeat for the background */
+}
+
+/* Style for the dial slider */
+.dial-slider {
+    -webkit-appearance: none; /* Remove default styling in WebKit browsers */
+    width: 100%; /* Full width of the parent container */
+    height: calc(8px + 30px); /* Height of the slider */
+    background: #d4af37; /* Gold background color */
+    border-radius: 10px; /* Rounded corners */
+    outline: none; /* Remove default outline */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-bottom: 8px; /* Space below the slider */
+    box-shadow: inset 3px 3px 6px #1c1c1c, 3px 3px 6px rgba(0, 0, 0, 0.5); /* Inner and outer shadow */
+}
+
+/* Style for the slider thumb */
+.dial-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default styling in WebKit browsers */
+    width: 12px; /* Width of the thumb */
+    height: 12px; /* Height of the thumb */
+    background: #3c3c3c; /* Dark gray background */
+    border: 2px solid #d4af37; /* Gold border */
+    border-radius: 50%; /* Round shape for the thumb */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Style for the digital display text */
+.digital-display {
+    color: #e0e0e0; /* Light gray text color */
+    font-size: 10px; /* Font size */
+}
+
+/* Container for signal visualization charts */
+.signal-visualization {
+    margin-top: 10px; /* Space above the container */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Arrange child elements in a column */
+    gap: 8px; /* Space between items */
+}
+
+/* Style for individual signal charts */
+.signal-chart {
+    border: none; /* Remove default border */
+    border-radius: 15px; /* Rounded corners */
+    background: #3c3c3c; /* Dark gray background */
+    padding: 6px; /* Padding inside the chart */
+    width: 100%; /* Full width of the parent container */
+    height: calc(100px + 25px); /* Height of the chart */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    overflow: hidden; /* Hide overflow content */
+    box-shadow: inset 5px 5px 10px #2e2e2e, 5px 5px 10px rgba(0, 0, 0, 0.5); /* Inner and outer shadow */
+}
+
+/* Style for the canvas element inside the signal chart */
+.signal-chart canvas {
+    width: 100% !important; /* Force full width */
+    height: 100% !important; /* Force full height */
+}
+
   
   
   
