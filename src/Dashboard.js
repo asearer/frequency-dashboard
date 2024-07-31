@@ -17,21 +17,43 @@ const mockSignalData = (type) => ({
   ],
 });
 
-const formatFrequency = (value) => {
+const formatFrequency = (value, unit) => {
   if (typeof value !== 'number') return 'N/A';
-  return value.toFixed(2) + ' MHz';
+  return value.toFixed(2) + ' ' + unit;
 };
 
 const Dashboard = () => {
   const [selectedType, setSelectedType] = useState('consumer');
-  
+  const [frequencies, setFrequencies] = useState({
+    AMRadio: 1000,
+    FMRadio: 1000,
+    TV: 1000,
+    Cellular: 1000,
+    SatelliteA: 5,
+    SatelliteB: 5,
+    SatelliteC: 5,
+    SatelliteD: 5,
+  });
+
   const handleToggle = () => {
     setSelectedType((prevType) => (prevType === 'consumer' ? 'satellite' : 'consumer'));
   };
 
-  const frequencies = selectedType === 'consumer' 
-    ? ['AM Radio', 'FM Radio', 'TV', 'Cellular']
-    : ['Satellite A', 'Satellite B', 'Satellite C', 'Satellite D'];
+  const handleSliderChange = (event) => {
+    const { name, value } = event.target;
+    setFrequencies((prev) => ({
+      ...prev,
+      [name]: parseFloat(value),
+    }));
+  };
+
+  const frequencyRanges = selectedType === 'consumer'
+    ? { min: 0, max: 1000, unit: 'MHz' }
+    : { min: 1, max: 20, unit: 'GHz' };
+
+  const currentFrequencies = selectedType === 'consumer'
+    ? ['AMRadio', 'FMRadio', 'TV', 'Cellular']
+    : ['SatelliteA', 'SatelliteB', 'SatelliteC', 'SatelliteD'];
 
   return (
     <div className="dashboard">
@@ -41,25 +63,33 @@ const Dashboard = () => {
         </button>
       </div>
       <div className="content">
-        {frequencies.map((frequency, index) => (
-          <div className="frequency-item" key={index}>
-            <h3>{frequency}</h3>
-            <p>Frequency: {formatFrequency(Math.random() * 1000)}</p>
+        {currentFrequencies.map((freqKey) => (
+          <div className="frequency-item" key={freqKey}>
+            <h3>{freqKey.replace(/([A-Z])/g, ' $1').toUpperCase()}</h3>
+            <p>Frequency: {formatFrequency(frequencies[freqKey], frequencyRanges.unit)}</p>
             <div className="dial-container">
               <div className="analog-display">
-                <div className="dial"></div>
+                <div
+                  className="dial"
+                  style={{
+                    backgroundSize: `${(frequencies[freqKey] - frequencyRanges.min) / (frequencyRanges.max - frequencyRanges.min) * 100}% 100%`,
+                  }}
+                ></div>
               </div>
               <input
                 type="range"
-                min="0"
-                max="1000"
+                name={freqKey}
+                min={frequencyRanges.min}
+                max={frequencyRanges.max}
                 step="0.01"
+                value={frequencies[freqKey]}
+                onChange={handleSliderChange}
                 className="dial-slider"
-                onChange={() => {}}
               />
-              <div className="digital-display">{formatFrequency(Math.random() * 1000)}</div>
+              <div className="digital-display">
+                {formatFrequency(frequencies[freqKey], frequencyRanges.unit)}
+              </div>
             </div>
-            {/* Signal Visualization */}
             <div className="signal-visualization">
               <div className="signal-chart">
                 <h4>Incoming Signal</h4>
@@ -78,6 +108,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
 
 
 
