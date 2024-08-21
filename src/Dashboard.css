@@ -55,7 +55,7 @@
 
 /* Style for each frequency item */
 .frequency-item {
-    padding: 8px; /* Padding inside the item */
+    padding: 16px; /* Increased padding for better content spacing */
     border: none; /* Remove default border */
     border-radius: 15px; /* Rounded corners */
     background: #3c3c3c; /* Dark gray background */
@@ -63,8 +63,9 @@
     display: flex; /* Flexbox layout */
     flex-direction: column; /* Arrange child elements in a column */
     overflow: hidden; /* Hide overflow content */
-    height: calc(100% - 30px); /* Adjust height for compactness */
+    min-height: 150px; /* Minimum height to ensure proper display */
 }
+
 
 /* Style for the frequency item headings */
 .frequency-item h3 {
