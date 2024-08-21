@@ -166,6 +166,64 @@
     height: 100% !important; /* Force full height */
 }
 
+/* Responsive design adjustments */
+@media (max-width: 1200px) {
+    .content {
+        grid-template-columns: repeat(3, 1fr); /* Adjust to three columns on medium screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .content {
+        grid-template-columns: repeat(2, 1fr); /* Adjust to two columns on smaller screens */
+    }
+
+    .toggle-button {
+        font-size: 14px; /* Adjust font size */
+        padding: 8px 16px; /* Adjust padding */
+    }
+
+    .digital-display {
+        font-size: 12px; /* Adjust font size */
+    }
+
+    .frequency-item {
+        padding: 10px; /* Adjust padding */
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        grid-template-columns: 1fr; /* Single column layout on very small screens */
+    }
+
+    .toggle-button {
+        font-size: 16px; /* Increase font size */
+        padding: 10px 20px; /* Adjust padding */
+    }
+
+    .digital-display {
+        font-size: 14px; /* Increase font size */
+    }
+
+    .frequency-item {
+        padding: 12px; /* Increase padding */
+    }
+
+    .analog-display {
+        height: 60px; /* Adjust height for small screens */
+    }
+
+    .dial-slider {
+        height: 40px; /* Adjust height for small screens */
+    }
+
+    .signal-chart {
+        height: 120px; /* Increase height for better visibility */
+    }
+}
+
+
   
   
   
